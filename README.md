@@ -1,6 +1,7 @@
 # Pendu
 ## But du jeu
-Le jeu est simple, il s'agit simplement de **deviner un ou plusieurs mot(s)** sans que le **bonhomme se pende**. Chaque case vide représente une lettre.
+Le jeu est simple, il s'agit simplement de **deviner un ou plusieurs mot(s)** sans que le **bonhomme se pende**. Chaque case vide représente une lettre.\
+Généralement, le pendu se joue à plusieurs mais vous pouvez très bien jouer tout seul sur cette version.
 ## Langages utilisés
 Voici la liste des langages de programmations que j'ai utilisé pour développer ce petit projet.
 - HTML
