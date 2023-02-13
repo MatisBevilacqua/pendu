@@ -3,11 +3,11 @@ let content = document.querySelector("input[type=text]");
 let submit = document.querySelector("input[type=submit]");
 
 function check(e) {
-    e.preventDeefault();
+    e.preventDefault();
     if (content.value > 1) {
-        console.log("Ok");
+         console.log("Ok");
     } else {
-        console.log("...");
+         console.log("...");
     }
 }
 
