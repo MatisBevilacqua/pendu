@@ -39,6 +39,7 @@ div {
 }
 
 span {
+    margin: 0 1%;
     display: inline-block;
     width: 2%;
     border-bottom: 3px solid black;
