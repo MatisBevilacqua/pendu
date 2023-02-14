@@ -56,8 +56,3 @@ footer a {
     text-decoration: none;
     font-weight: bold;
 }
-
-.letter {
-    color: black;
-    border-bottom: none;
-}

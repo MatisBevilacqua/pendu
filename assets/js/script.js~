@@ -1,10 +1,58 @@
+// let result = document.querySelector("#content");
+// let content = document.querySelector("input[type=text]");
+// let submit = document.querySelector("input[type=submit]");
+// let word = ["VOITURE", "FRUIT", "JEU", "NATURE"];
+// let createSpan = null;
+// let userLetter;
+
+// function randomize(tab) {
+//     let i, j, tmp;
+//     for (i = tab.length - 1; i > 0; i--) {
+//         j = Math.floor(Math.random() * (i + 1));
+//         tmp = tab[i];
+//         tab[i] = tab[j];
+//         tab[j] = tmp;
+//     }
+//     return tab;
+// }
+
+// let game = randomize(word);
+// let resultEnd = game[0];
+
+// function selectWord() {
+//     for (let i = 0; i < resultEnd.length; i++) {
+//         createSpan = document.createElement("span");
+//         result.appendChild(createSpan);
+//         console.log(createSpan);
+//     }
+// }
+
+// function check(e) {
+//     e.preventDefault();
+//     if (content.value.length < 2) {
+//          userLetter = content.value;
+//          let wordSplit = resultEnd.split("");
+//          console.log(wordSplit);
+//          for (let j = 0; j <) {
+
+//          }
+//     } else {
+         
+//     }
+//     console.log(content.value.length)
+// }
+
+// console.log(resultEnd.length);
+// selectWord();
+// submit.addEventListener("click", check);
+
 // affichage du mot à trouver
 let result = document.querySelector("#content");
 // saisie user
 let content = document.querySelector("input[type=text]");
 let submit = document.querySelector("input[type=submit]");
 // liste de mots
-let word = ["VOITURE", "FRUIT", "JEU", "NATURE", ""];
+let word = ["VOITURE", "FRUIT", "JEU", "NATURE"];
 // nombre de lettres à afficher en tirets au début de la partie
 let createSpan = null;
 let userLetter;
@@ -44,16 +92,14 @@ function check(e) {
          let wordSplit = resultEnd.split(""); // 2.2
          console.log(wordSplit);
          for (let j = 0; j < wordSplit.length; j++) { // 2.3
-            let resultUser = wordSplit.includes(userLetter);
-            if (resultUser) {
-                createSpan.setAttribute("class", "letter");
+            let resultUser = wordSplit.includes(wordSplit.length);
+            if (resultUser == true) {
                 console.log("Ok");
             } else {
                 console.log("Non")
             }
          }
     } else { // 1.3
-    
     }
     console.log(content.value.length)
 }
