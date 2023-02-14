@@ -49,6 +49,11 @@ function check(e) {
                 for (let j = 0; j < wordSplit.length; j++) { // 2.3
                         createSpan.setAttribute("class", "letter");
                         console.log("Ok");
+                        let indice = [];
+                        if (wordSplit[j] == resultUser) {
+                            indice.push(j);
+                            console.log(indice);
+                        }
                 }
             } else {
                 console.log("Non")
