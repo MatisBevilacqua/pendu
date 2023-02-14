@@ -91,15 +91,14 @@ function check(e) {
          userLetter = content.value; // 2.1
          let wordSplit = resultEnd.split(""); // 2.2
          console.log(wordSplit);
-         let resultUser = wordSplit.includes(userLetter.toUpperCase());
-         if (resultUser) {
-            console.log("Ok");
-            for (let j = 0; j < wordSplit.length; j++) { // 2.3
-                console.log(j);
+         for (let j = 0; j < wordSplit.length; j++) { // 2.3
+            let resultUser = wordSplit.includes(wordSplit.length);
+            if (resultUser == true) {
+                console.log("Ok");
+            } else {
+                console.log("Non")
             }
-        } else {
-            console.log("Non")
-        }
+         }
     } else { // 1.3
     }
     console.log(content.value.length)
