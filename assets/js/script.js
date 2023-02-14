@@ -40,20 +40,20 @@ function selectWord() {
 function check(e) {
     e.preventDefault();
     if (content.value.length < 2) { // 1.2
-         userLetter = content.value; // 2.1
-         let wordSplit = resultEnd.split(""); // 2.2
-         console.log(wordSplit);
-         for (let j = 0; j < wordSplit.length; j++) { // 2.3
-            let resultUser = wordSplit.includes(userLetter);
+        userLetter = content.value; // 2.1
+        let wordSplit = resultEnd.split(""); // 2.2
+        console.log(wordSplit);
+        let resultUser = wordSplit.includes(userLetter.toUpperCase()); // tu avais oublié le toUpperCase() et de déplacer la variable en dehors de la boucle
+        console.log(resultUser);
             if (resultUser) {
-                createSpan.setAttribute("class", "letter");
-                console.log("Ok");
+                for (let j = 0; j < wordSplit.length; j++) { // 2.3
+                        createSpan.setAttribute("class", "letter");
+                        console.log("Ok");
+                }
             } else {
                 console.log("Non")
             }
-         }
     } else { // 1.3
-    
     }
     console.log(content.value.length)
 }
