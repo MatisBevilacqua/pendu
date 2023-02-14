@@ -93,14 +93,16 @@ function check(e) {
          userLetter = content.value; // 2.1
          let wordSplit = resultEnd.split(""); // 2.2
          console.log(wordSplit);
-         for (let j = 0; j < wordSplit.length; j++) { // 2.3
-            let resultUser = wordSplit.includes(wordSplit.length);
-            if (resultUser == true) {
-                console.log("Ok");
-            } else {
-                console.log("Non")
+         let resultUser = wordSplit.includes(userLetter);
+         if (resultUser == true) {
+            console.log("Ok");
+            for (let j = 0; j < wordSplit.includes(); j++) { // 2.3
+
             }
-         }
+        } else {
+            console.log("Non")
+        }
+         
     } else { // 1.3
          
     }
