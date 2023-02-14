@@ -61,9 +61,14 @@ function check(e) {
             }
             // maintenant on boucle sur les span pour ajouter à ceux qui ont le même indice que le tableau indice la classe pour afficher les lettres
             //createSpan.setAttribute("class", "letter");
-            for (let i = 0; i < query; i++) {
-                for (let j = 0; j < indice; j++) {
-                    createSpan.setAttribute("class", "letter");
+            let spans = document.querySelectorAll('span');
+            for(let i = 0; i < spans.length; i++){
+                for(let j = 0; j < indice.length; j++){
+                    if(i === indice[j]){
+                        spans[i].style.color = 'red';
+                        spans[i].innerHTML = userLetter.toUpperCase();
+                        console.log('change');
+                    }
                 }
             }
     } else { // 1.3
