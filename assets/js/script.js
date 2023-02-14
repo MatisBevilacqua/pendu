@@ -5,6 +5,7 @@ let content = document.querySelector("input[type=text]");
 let submit = document.querySelector("input[type=submit]");
 // liste de mots
 let word = ["VOITURE", "FRUIT", "JEU", "NATURE", "NON"];
+let query = document.querySelectorAll("span");
 // nombre de lettres à afficher en tirets au début de la partie
 let createSpan = null;
 let userLetter;
@@ -60,6 +61,11 @@ function check(e) {
             }
             // maintenant on boucle sur les span pour ajouter à ceux qui ont le même indice que le tableau indice la classe pour afficher les lettres
             //createSpan.setAttribute("class", "letter");
+            for (let i = 0; i < query; i++) {
+                for (let j = 0; j < indice; j++) {
+                    createSpan.setAttribute("class", "letter");
+                }
+            }
     } else { // 1.3
     }
     console.log(content.value.length)

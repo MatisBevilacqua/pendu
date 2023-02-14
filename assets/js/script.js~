@@ -4,7 +4,7 @@ let result = document.querySelector("#content");
 let content = document.querySelector("input[type=text]");
 let submit = document.querySelector("input[type=submit]");
 // liste de mots
-let word = ["VOITURE", "FRUIT", "JEU", "NATURE", ""];
+let word = ["VOITURE", "FRUIT", "JEU", "NATURE", "NON"];
 // nombre de lettres à afficher en tirets au début de la partie
 let createSpan = null;
 let userLetter;
@@ -22,12 +22,13 @@ function randomize(tab) {
 let game = randomize(word);
 // récupération du 1er mot après mélange de la liste
 let resultEnd = game[0];
+console.log(resultEnd);
 // affichage du nombre de lettres en tirets au début de la partie
 function selectWord() {
     for (let i = 0; i < resultEnd.length; i++) {
         createSpan = document.createElement("span");
         result.appendChild(createSpan);
-        console.log(createSpan);
+        // console.log(createSpan);
     }
 }
 // partie principale du jeu :
@@ -39,6 +40,7 @@ function selectWord() {
 // 1.3- si non (à faire plus tard)
 function check(e) {
     e.preventDefault();
+    let indice = [];
     if (content.value.length < 2) { // 1.2
         userLetter = content.value; // 2.1
         let wordSplit = resultEnd.split(""); // 2.2
@@ -47,12 +49,17 @@ function check(e) {
         console.log(resultUser);
             if (resultUser) {
                 for (let j = 0; j < wordSplit.length; j++) { // 2.3
-                        createSpan.setAttribute("class", "letter");
+                    if (wordSplit[j] === userLetter.toUpperCase()) { // encore cette histoire de casse ... 
                         console.log("Ok");
+                        indice.push(j);
+                    }
                 }
+                console.log(indice);
             } else {
                 console.log("Non")
             }
+            // maintenant on boucle sur les span pour ajouter à ceux qui ont le même indice que le tableau indice la classe pour afficher les lettres
+            //createSpan.setAttribute("class", "letter");
     } else { // 1.3
     }
     console.log(content.value.length)
