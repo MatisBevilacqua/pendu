@@ -1,15 +1,12 @@
-// affichage du mot à trouver
 let result = document.querySelector("#content");
-// saisie user
 let content = document.querySelector("input[type=text]");
 let submit = document.querySelector("input[type=submit]");
-// liste de mots
-let word = ["VOITURE", "FRUIT", "JEU", "NATURE", "NON"];
-let query = document.querySelectorAll("span");
-// nombre de lettres à afficher en tirets au début de la partie
+let word = ["VOITURE", "FRUIT", "JEU", "NATURE", "ELEMENTS", "ANE","AXE","BEL","BIP","CAR","COL","COQ","COR","COU","CRI","GAG","GAZ","GEL","JUS","NET","NUL","VAL","SKI","SOT","TAS","TIC","ATRE","BEAU","BETE","BOXE","BRUN","CERF","CHEZ","CIRE","DAME","DENT","DOCK","DODO","DRAP","DUNE","EMEU","FADO","FAUX","IBIS","JAZZ","JOLI","JOUE","KAKI","LOGO","LOIN","LONG","LUNE","LYNX","MINE","MURE","OUIE","OURS","PION","RHUM","RIDE","ROCK","SEAU","TEST","THYM","TROU","TRUC","USER","VERT","YOGI","WATT","ACCES","AIMER","ALOES","ASSEZ","AVION","AWALE","BALAI","BANJO","BARBE","BONNE","BRUIT","BUCHE","CACHE","CAPOT","CARTE","CHIEN","CRANE","CYCLE","EBENE","ESSAI","GIFLE","HONNI","JAMBE","KOALA","LIVRE","LOURD","MAMAN","MOULT","NOEUD","ORTIE","PECHE","POIRE","POMME","POSTE","PRUNE","RADAR","RADIS","ROBOT","ROUTE","RUGBY","SEUIL","TAUPE","TENUE","TEXTE","TYRAN","USUEL","VALSE","ACAJOU","AGNEAU","ALARME","ANANAS","ANGORA","ANIMAL","ARCADE","AVIRON","AZIMUT","BABINE","BALADE","BONZAI","BASSON","BILLET","BOUCHE","BOUCLE","BRONZE","CABANE","CAIMAN","CLOCHE","CHEQUE","CIRAGE","COCCYX","CRAYON","GARAGE","GOSPEL","GOULOT","GRAMME","GRELOT","GUENON","HOCHET","HORMIS","HUMOUR","HURLER","JARGON","LIMITE","LIONNE","MENTHE","OISEAU","PODIUM","POULPE","POUMON","PUZZLE","QUARTZ","RAPIDE","SEISME","TETINE","TOMATE","WALABI","WHISKY","ZIPPER","ABRITER","BALLAST","BARYTON","BASSINE","BATAVIA","BILLARD","BRETZEL","CITHARE","CHARIOT","CLAIRON","CORBEAU","CORTEGE","CRAPAUD","CYMBALE","DENTIER","DJEMBE","DRAPEAU","EXEMPLE","FOURMIS","GRANDIR","ICEBERG","JAVELOT","JOCKEY","JOURNAL","JOURNEE","JOUXTER","LOSANGE","MACADAM","MONDIAL","NOTABLE","OXYGENE","PANIQUE","PETROLE","POTERIE","POUVOIR","RENEGAT","SCOOTER","SENTEUR","SIFFLET","SPIRALE","SUCETTE","STROPHE","TONNEAU","TROUSSE","TUNIQUE","UKULELE","VAUTOUR","ZOZOTER","AQUARIUM","ARAIGNEE","ARBALETE","ARCHIPEL","BANQUISE","BATTERIE","BROCANTE","BROUHAHA","CAPELINE","CLAVECIN","CLOPORTE","DEBUTANT","DIAPASON","GANGSTER","GOTHIQUE","HAUTBOIS","HERISSON","LOGICIEL","OBJECTIF","PARANOIA","PARCOURS","PASTICHE","QUESTION","QUETSCHE","SCARABEE","SCORPION","SYMPTOME","TABOURET","TOMAHAWK","TOUJOURS","TOURISME","TRIANGLE","UTOPIQUE","ZEPPELIN","ACCORDEON","ASCENSEUR","ASCENSION","ASEPTISER","AUTOROUTE","AVALANCHE","BALALAIKA","BILBOQUET","BOURRICOT","BRILLANCE","CABRIOLET","CONTRARIO","CORNEMUSE","DANGEREUX","EPLUCHAGE","FEODALITE","FORTERESSE","GONDOLIER","GRAPHIQUE","HOROSCOPE","INTREPIDE","KLAXONNER","MASCARADE","METAPHORE","NARRATEUR","PERIPETIE","POPULAIRE","PRINTEMPS","QUEMANDER","TAMBOURIN","VESTIAIRE","XYLOPHONE","ACROSTICHE","APOCALYPSE","ATTRACTION","AVENTURIER","BOUILLOTTE","CITROUILLE","CONTROVERSE","COQUELICOT","DISSIMULER","FLIBUSTIER","FORESTIERE","GRENOUILLE","IMPOSSIBLE","LABYRINTHE","MAHARADJAH","PRUDEMMENT","QUADRICEPS","SOLILOQUER","SUBJECTIVE","BACCALAUREAT","ABRACADABRA","FRANCOPHILE","PANDEMONIUM","CHLOROPHYLLE","METALLURGIE","METAMORPHOSE","MONTGOLFIERE","KALEIDOSCOPE","CONQUISTADOR","CONSPIRATEUR","RHODODENDRON","QUALIFICATION","PROTOZOAIRE","QUADRILATERE","ZYGOMATIQUE","SORCELLERIE","BELLIGERANT"];
 let createSpan = null;
 let userLetter;
-// mélanger la liste de mots
+let resultGameOver = 5;
+let gameOverText = document.querySelector("#gameOverText");
+let winText = document.querySelector("#winText");
 function randomize(tab) {
     let i, j, tmp;
     for (i = tab.length - 1; i > 0; i--) {
@@ -21,60 +18,61 @@ function randomize(tab) {
     return tab;
 }
 let game = randomize(word);
-// récupération du 1er mot après mélange de la liste
 let resultEnd = game[0];
-console.log(resultEnd);
-// affichage du nombre de lettres en tirets au début de la partie
 function selectWord() {
     for (let i = 0; i < resultEnd.length; i++) {
         createSpan = document.createElement("span");
         result.appendChild(createSpan);
-        // console.log(createSpan);
     }
 }
-// partie principale du jeu :
-// 1- vérifier que le user a saisi une seule lettre
-// 1.2- si oui
-// ---- 2.1- récupération de la lettre choisie => userLetter
-// ---- 2.2- mot à trouver converti en tableau de lettres => wordSplit
-// ---- 2.3- parcourir le tableau wordSplit pour voir si la lettre choisie existe
-// 1.3- si non (à faire plus tard)
 function check(e) {
     e.preventDefault();
     let indice = [];
-    if (content.value.length < 2) { // 1.2
-        userLetter = content.value; // 2.1
-        let wordSplit = resultEnd.split(""); // 2.2
-        console.log(wordSplit);
-        let resultUser = wordSplit.includes(userLetter.toUpperCase()); // tu avais oublié le toUpperCase() et de déplacer la variable en dehors de la boucle
-        console.log(resultUser);
+    if (content.value.length < 2) {
+        userLetter = content.value;
+        let wordSplit = resultEnd.split("");
+        let resultUser = wordSplit.includes(userLetter.toUpperCase());
             if (resultUser) {
-                for (let j = 0; j < wordSplit.length; j++) { // 2.3
-                    if (wordSplit[j] === userLetter.toUpperCase()) { // encore cette histoire de casse ... 
-                        console.log("Ok");
+                for (let j = 0; j < wordSplit.length; j++) {
+                    if (wordSplit[j] === userLetter.toUpperCase()) {
                         indice.push(j);
                     }
                 }
-                console.log(indice);
             } else {
-                console.log("Non")
+                resultGameOver -= 1;
+                if (resultGameOver <= 0) {
+                    alert("Perdu !");
+                    gameOverText.classList.remove("none");
+                    content.disabled = true;
+                    submit.disabled = true;
+                    result.style.color = "black";
+                    result.style.borderBottomColor = "transparent";
+                }
             }
-            // maintenant on boucle sur les span pour ajouter à ceux qui ont le même indice que le tableau indice la classe pour afficher les lettres
-            //createSpan.setAttribute("class", "letter");
             let spans = document.querySelectorAll('span');
             for(let i = 0; i < spans.length; i++){
                 for(let j = 0; j < indice.length; j++){
                     if(i === indice[j]){
-                        spans[i].style.color = 'red';
+                        spans[i].style.color = 'black';
                         spans[i].innerHTML = userLetter.toUpperCase();
-                        console.log('change');
+                        spans[i].style.borderBottomColor = 'transparent';
                     }
                 }
             }
-    } else { // 1.3
+    } else {
+
     }
-    console.log(content.value.length)
+
+    let winCheck = document.querySelectorAll("#content span[style*='color']");
+    let car = "";
+    for (let win of winCheck) {
+        car += win.innerText;
+    }
+    if (car === resultEnd) {
+        content.disabled = true;
+        submit.disabled = true;
+        winText.classList.remove("none");
+    }
 }
-console.log(resultEnd.length);
 selectWord();
 submit.addEventListener("click", check);

@@ -57,7 +57,15 @@ footer a {
     font-weight: bold;
 }
 
+input:disabled {
+    cursor: not-allowed;
+}
+
 .letter {
     color: black;
     border-bottom: none;
+}
+
+.none {
+    display: none;
 }
